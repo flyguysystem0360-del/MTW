@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Misa West Live in Concert — Reggae Fundraiser</title>
+  <meta name="description" content="Misa West Live in Concert at The Dingle, B45 0BP on Sunday, December 20, 2026. Fundraising target: £1,600. DJ Jah Macka, Jamaican food, open bars." />
+  <meta property="og:title" content="Misa West Live in Concert — Reggae Fundraiser" />
+  <meta property="og:description" content="Sunday, Dec 20, 2026 at The Dingle, B45 0BP. DJ Jah Macka on the sound system, authentic Jamaican food, licensed bars. Support the campaign on GoFundMe!" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Bebas Neue, Syne, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN for self-contained portability -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            headline: ['"Bebas Neue"', 'cursive', 'sans-serif'],
+            display: ['"Syne"', 'sans-serif'],
+          },
+          colors: {
+            jam: {
+              green: '#009B3A',
+              gold: '#FED100',
+              black: '#111111',
+            },
+            uk: {
+              red: '#C8102E',
+              white: '#FFFFFF',
+              blue: '#012169',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Stage Lighting Keyframe Animations */
+    @keyframes sweepLeft {
+      0%, 100% { transform: rotate(-26deg) scaleY(1); opacity: 0.65; }
+      50% { transform: rotate(-10deg) scaleY(1.2); opacity: 0.85; }
+    }
+    @keyframes sweepRight {
+      0%, 100% { transform: rotate(26deg) scaleY(1); opacity: 0.65; }
+      50% { transform: rotate(12deg) scaleY(1.2); opacity: 0.85; }
+    }
+    @keyframes sweepGold {
+      0%, 100% { transform: rotate(-8deg) scale(1); opacity: 0.7; }
+      50% { transform: rotate(8deg) scale(1.15); opacity: 0.95; }
+    }
+    @keyframes pulseHaze {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(1.05); }
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-sweep-left { animation: sweepLeft 8s ease-in-out infinite alternate; transform-origin: top center; }
+    .animate-sweep-right { animation: sweepRight 9s ease-in-out infinite alternate; transform-origin: top center; }
+    .animate-sweep-gold { animation: sweepGold 7s ease-in-out infinite alternate; transform-origin: top center; }
+    .animate-pulse-haze { animation: pulseHaze 6s ease-in-out infinite; }
+    .animate-ticker { display: flex; width: max-content; animation: ticker 26s linear infinite; }
+    .animate-ticker:hover { animation-play-state: paused; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-sweep-left, .animate-sweep-right, .animate-sweep-gold, .animate-pulse-haze, .animate-ticker {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#0b0c0e] text-[#f8fafc] antialiased selection:bg-[#FED100] selection:text-black min-h-screen overflow-x-hidden flex flex-col font-sans">
+
+  <!-- Volumetric Stage Spotlights and Golden Particles -->
+  <div id="stage-fx" aria-hidden="true" class="pointer-events-none fixed inset-0 z-10 overflow-hidden">
+    <!-- Top Stage Truss -->
+    <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-black via-zinc-950 to-transparent flex justify-around px-8 opacity-70">
+      <div class="w-8 h-2 bg-zinc-800 rounded-b shadow-[0_4px_12px_rgba(0,155,58,0.8)] border-b border-[#009B3A]"></div>
+      <div class="w-10 h-2 bg-zinc-800 rounded-b shadow-[0_4px_16px_rgba(254,209,0,0.9)] border-b border-[#FED100]"></div>
+      <div class="w-12 h-2.5 bg-zinc-700 rounded-b shadow-[0_6px_20px_rgba(254,209,0,1)] border-b border-[#FED100]"></div>
+      <div class="w-10 h-2 bg-zinc-800 rounded-b shadow-[0_4px_16px_rgba(200,16,46,0.8)] border-b border-[#C8102E]"></div>
+      <div class="w-8 h-2 bg-zinc-800 rounded-b shadow-[0_4px_12px_rgba(1,33,105,0.8)] border-b border-[#012169]"></div>
+    </div>
+
+    <!-- Jamaican Green Cone Beam -->
+    <div class="animate-sweep-left absolute -top-10 left-[12%] w-[180px] md:w-[320px] h-[95vh] blur-2xl opacity-40 mix-blend-screen"
+         style="background: linear-gradient(175deg, rgba(0, 155, 58, 0.75) 0%, rgba(0, 155, 58, 0.35) 45%, transparent 85%); clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);"></div>
+
+    <!-- Jamaican Radiant Gold Center Beam -->
+    <div class="animate-sweep-gold absolute -top-10 left-[30%] w-[220px] md:w-[400px] h-[100vh] blur-xl opacity-50 mix-blend-screen"
+         style="background: linear-gradient(180deg, rgba(254, 209, 0, 0.85) 0%, rgba(254, 209, 0, 0.4) 50%, transparent 90%); clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);"></div>
+
+    <!-- Center Warm Flare -->
+    <div class="absolute top-[8%] left-1/2 -translate-x-1/2 w-[600px] md:w-[850px] h-[360px] rounded-full blur-[90px] opacity-25 mix-blend-screen"
+         style="background: radial-gradient(circle, rgba(254, 209, 0, 0.55) 0%, rgba(0, 155, 58, 0.25) 50%, rgba(200, 16, 46, 0.15) 75%, transparent 100%);"></div>
+
+    <!-- British Red Spotlight Beam -->
+    <div class="animate-sweep-right absolute -top-10 right-[25%] w-[200px] md:w-[360px] h-[95vh] blur-2xl opacity-45 mix-blend-screen"
+         style="background: linear-gradient(185deg, rgba(200, 16, 46, 0.8) 0%, rgba(200, 16, 46, 0.35) 45%, transparent 85%); clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);"></div>
+
+    <!-- British Blue Rim Wash Beam -->
+    <div class="absolute -top-10 right-[8%] w-[160px] md:w-[280px] h-[90vh] origin-top rotate-[26deg] blur-2xl opacity-35 mix-blend-screen"
+         style="background: linear-gradient(185deg, rgba(1, 33, 105, 0.9) 0%, rgba(1, 33, 105, 0.4) 45%, transparent 85%); clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);"></div>
+
+    <!-- Ambient Haze -->
+    <div class="animate-pulse-haze absolute bottom-0 inset-x-0 h-[45vh] bg-gradient-to-t from-[#0c0d10] via-zinc-950/60 to-transparent"></div>
+
+    <!-- Canvas for Floating Gold Sparkles -->
+    <canvas id="sparkle-canvas" class="absolute inset-0 w-full h-full"></canvas>
+  </div>
+
+  <!-- Intentional 6-Color Heritage Ribbon -->
+  <div class="w-full flex h-1.5 overflow-hidden sticky top-0 z-50">
+    <div class="flex-[3] bg-[#009B3A]" title="Jamaican Green"></div>
+    <div class="flex-[2] bg-[#FED100]" title="Jamaican Gold"></div>
+    <div class="flex-[1.5] bg-[#111111]" title="Jamaican Black"></div>
+    <div class="flex-[2] bg-[#C8102E]" title="British Red"></div>
+    <div class="flex-[1] bg-[#FFFFFF]" title="British White"></div>
+    <div class="flex-[2] bg-[#012169]" title="British Royal Blue"></div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="sticky top-1.5 z-40 w-full bg-zinc-950/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand / Identity -->
+        <a href="#" class="flex flex-col text-left">
+          <span class="text-3xl font-headline tracking-wider text-white uppercase leading-none">
+            MISA <span class="text-[#FED100]">WEST</span>
+          </span>
+          <span class="text-[11px] font-semibold text-zinc-400 tracking-wider uppercase">
+            Live in Concert · Reggae Fundraiser
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6">
+          <a href="#event-info" class="text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-[#FED100] transition-colors">Event Info</a>
+          <a href="#music" class="text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-[#FED100] transition-colors">Music &amp; Videos</a>
+          <a href="#fundraiser" class="text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-[#FED100] transition-colors">Fundraiser (£1,600)</a>
+          <a href="#venue" class="text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-[#FED100] transition-colors">Venue &amp; Travel</a>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="flex items-center gap-3">
+          <button onclick="playDubHorn()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-white/10 text-xs font-semibold text-zinc-300 hover:text-[#FED100] hover:border-[#FED100]/60 transition-all">
+            <span>SOUND SYSTEM FX</span>
+          </button>
+
+          <button onclick="openDonateModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FED100] hover:bg-yellow-400 text-black text-xs font-extrabold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(254,209,0,0.3)] hover:scale-105">
+            <span>SUPPORT CAMPAIGN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Marquee Ticker -->
+  <div class="relative z-20 w-full overflow-hidden bg-black/85 border-y border-white/10 backdrop-blur-md">
+    <div class="flex whitespace-nowrap animate-ticker py-2.5">
+      <div class="inline-flex items-center gap-3 px-6 text-xs md:text-sm tracking-wider uppercase font-semibold text-zinc-300">
+        <span class="text-[#FED100]">⚡ MISA WEST LIVE IN CONCERT</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-white">SUNDAY, DECEMBER 20, 2026</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#009B3A]">THE DINGLE, B45 0BP</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#FED100]">5 PM SHARP</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-emerald-400">DJ JAH MACKA ON THE SOUND SYSTEM</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-white">ENTRY £10 AT THE DOOR</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#FED100]">AUTHENTIC JAMAICAN FOOD &amp; OPEN BARS</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#C8102E]">GOFUNDME TARGET: £1,600</span>
+        <span class="text-zinc-600">///</span>
+      </div>
+      <!-- Repeated for seamless loop -->
+      <div class="inline-flex items-center gap-3 px-6 text-xs md:text-sm tracking-wider uppercase font-semibold text-zinc-300">
+        <span class="text-[#FED100]">⚡ MISA WEST LIVE IN CONCERT</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-white">SUNDAY, DECEMBER 20, 2026</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#009B3A]">THE DINGLE, B45 0BP</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#FED100]">5 PM SHARP</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-emerald-400">DJ JAH MACKA ON THE SOUND SYSTEM</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-white">ENTRY £10 AT THE DOOR</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#FED100]">AUTHENTIC JAMAICAN FOOD &amp; OPEN BARS</span>
+        <span class="text-zinc-600">///</span>
+        <span class="text-[#C8102E]">GOFUNDME TARGET: £1,600</span>
+        <span class="text-zinc-600">///</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 relative z-20">
+    <!-- Hero Section -->
+    <section class="relative pt-6 pb-16 md:pt-12 md:pb-24 overflow-hidden">
+      <!-- Background Concert Imagery -->
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <img src="/assets/aistudio/EYAb3uo9we__u7J_730b7364.jpg" alt="Concert atmosphere" class="w-full h-full object-cover object-top opacity-30 mix-blend-luminosity filter contrast-125" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-[#0c0d10]/85 to-transparent"></div>
+      </div>
+
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Dual Heritage Badge -->
+        <div class="flex items-center justify-between mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-xs text-zinc-300">
+            <span class="font-bold text-white">🇯🇲 Jamaica</span>
+            <span class="text-zinc-500">×</span>
+            <span class="font-bold text-white">🇬🇧 United Kingdom</span>
+            <span class="text-[#FED100] font-semibold">· Roots Reggae</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Left Column -->
+          <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="space-y-2">
+              <div class="text-xs font-bold uppercase tracking-widest text-[#FED100] flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#009B3A] animate-ping"></span>
+                <span>OFFICIAL LIVE CONCERT &amp; FUNDRAISER</span>
+              </div>
+              <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline tracking-tight text-white uppercase leading-[0.88]">
+                MISA <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FED100] via-[#009B3A] to-[#FED100]">WEST</span>
+              </h1>
+              <p class="text-xl sm:text-2xl md:text-3xl font-display font-bold text-zinc-100">
+                Live in Concert — Fundraising Campaign
+              </p>
+            </div>
+
+            <!-- Key Info Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-900/90 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-[#009B3A]/20 text-[#009B3A]">📅</div>
+                <div>
+                  <div class="text-[11px] font-semibold text-zinc-400 uppercase">Date</div>
+                  <div class="text-sm font-bold text-white">Sunday, Dec 20, 2026</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-[#FED100]/20 text-[#FED100]">⏰</div>
+                <div>
+                  <div class="text-[11px] font-semibold text-zinc-400 uppercase">Time</div>
+                  <div class="text-sm font-bold text-white">5 PM Sharp</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-[#C8102E]/20 text-[#C8102E]">📍</div>
+                <div>
+                  <div class="text-[11px] font-semibold text-zinc-400 uppercase">Venue</div>
+                  <div class="text-sm font-bold text-white">The Dingle, B45 0BP</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-sm sm:text-base text-zinc-300 leading-relaxed max-w-2xl">
+              Experience the pulse of authentic Jamaican roots reggae and sound system culture live on stage. Join us at The Dingle for an unforgettable community celebration powered by selector <strong class="text-white">DJ Jah Macka</strong>, delicious authentic Jamaican food, licensed bars, and real community vibes. All contributions support our £1,600 concert production target.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+              <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] via-[#ffd726] to-[#009B3A] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_rgba(254,209,0,0.45)] hover:scale-105 transition-all">
+                <span>SUPPORT THE CAMPAIGN</span>
+                <span>↗</span>
+              </a>
+
+              <a href="#music" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#012169] hover:bg-[#022c8a] text-white border border-white/20 text-sm font-semibold transition-all">
+                <span>EXPLORE MUSIC VIDEOS</span>
+              </a>
+
+              <button onclick="downloadCalendarInvite()" class="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-white/10 text-sm font-medium transition-all">
+                <span>SAVE DATE (.ICS)</span>
+              </button>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2 text-xs text-zinc-400">
+              <span class="text-zinc-200">✓ £10 Entry at the Door</span>
+              <span>·</span>
+              <span class="text-zinc-200">Authentic Jamaican Food On Sale</span>
+              <span>·</span>
+              <span class="text-zinc-200">Licensed Bars Open</span>
+              <span>·</span>
+              <span class="text-[#FED100] font-semibold">Goal: £1,600</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Verified Artist Portrait -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-3xl bg-zinc-950/90 border border-white/15 overflow-hidden shadow-2xl backdrop-blur-xl">
+              <!-- Top Flag Bar -->
+              <div class="w-full flex h-2">
+                <div class="flex-[3] bg-[#009B3A]"></div>
+                <div class="flex-[2] bg-[#FED100]"></div>
+                <div class="flex-[1.5] bg-[#111111]"></div>
+                <div class="flex-[2] bg-[#C8102E]"></div>
+                <div class="flex-[1] bg-[#FFFFFF]"></div>
+                <div class="flex-[2] bg-[#012169]"></div>
+              </div>
+
+              <!-- Real Portrait of Misa West -->
+              <div class="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-zinc-900 group">
+                <img src="/assets/aistudio/Fundraiser-by-Craig-West-Misa-West-live-in-Concert-10-26-2026_06_40_PM_f00aed6c.png"
+                     alt="Misa West - Verified artist portrait"
+                     class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/30"></div>
+                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 border border-[#FED100]/50 text-[11px] font-bold text-[#FED100]">
+                  OFFICIAL ARTIST PORTRAIT
+                </div>
+                <div class="absolute bottom-3 inset-x-3 flex items-end justify-between">
+                  <div>
+                    <div class="text-xl font-headline tracking-wide text-white drop-shadow">MISA WEST</div>
+                    <div class="text-xs text-zinc-300">Lead Vocalist &amp; Reggae Artist</div>
+                  </div>
+                  <div class="px-2.5 py-1 rounded bg-[#009B3A] text-[11px] font-bold text-white shadow">
+                    LIVE DEC 20
+                  </div>
+                </div>
+              </div>
+
+              <!-- Countdown Timer -->
+              <div class="p-4 sm:p-5 bg-gradient-to-b from-zinc-900 to-zinc-950 space-y-3">
+                <div class="flex items-center justify-between text-xs font-semibold text-zinc-400">
+                  <span class="text-white">COUNTDOWN TO SHOWTIME</span>
+                  <span class="text-[#009B3A] font-mono">5:00 PM GMT</span>
+                </div>
+                <div class="grid grid-cols-4 gap-2 text-center">
+                  <div class="p-2 rounded-xl bg-black/60 border border-white/5">
+                    <div id="days" class="text-2xl sm:text-3xl font-headline text-white">0</div>
+                    <div class="text-[10px] font-semibold text-zinc-400 uppercase">Days</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-black/60 border border-white/5">
+                    <div id="hours" class="text-2xl sm:text-3xl font-headline text-[#FED100]">00</div>
+                    <div class="text-[10px] font-semibold text-zinc-400 uppercase">Hours</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-black/60 border border-white/5">
+                    <div id="minutes" class="text-2xl sm:text-3xl font-headline text-[#009B3A]">00</div>
+                    <div class="text-[10px] font-semibold text-zinc-400 uppercase">Mins</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-black/60 border border-white/5">
+                    <div id="seconds" class="text-2xl sm:text-3xl font-headline text-[#C8102E]">00</div>
+                    <div class="text-[10px] font-semibold text-zinc-400 uppercase">Secs</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fundraising Section -->
+    <section id="fundraiser" class="relative py-16 md:py-24 bg-[#0e1014] overflow-hidden">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FED100]/10 border border-[#FED100]/30 text-xs font-bold text-[#FED100] uppercase tracking-wider">
+            COMMUNITY FUNDRAISING MISSION
+          </div>
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-headline tracking-tight text-white uppercase">
+            HELP BRING MISA WEST <span class="text-[#FED100]">LIVE TO THE STAGE</span>
+          </h2>
+          <p class="text-sm sm:text-base text-zinc-300">
+            We are coming together as a community of roots reggae lovers, Jamaican diaspora, and live music supporters to make this landmark live concert possible.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-gradient-to-b from-zinc-900/90 to-zinc-950 border border-white/10 shadow-2xl p-6 sm:p-10 lg:p-12">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <!-- Left 7 Cols -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="p-6 rounded-2xl bg-black/60 border border-white/10 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Campaign Target</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-[#009B3A]/20 text-xs font-semibold text-[#009B3A]">Direct GoFundMe</span>
+                </div>
+                <div class="flex items-baseline gap-3">
+                  <span class="text-5xl sm:text-6xl font-headline text-white">£1,600</span>
+                  <span class="text-sm text-zinc-400">Target Goal</span>
+                </div>
+                <p class="text-xs sm:text-sm text-zinc-300">
+                  All contributions go directly towards the live concert production, venue hire at The Dingle, sound engineering, and authentic community hospitality.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] to-[#ffd000] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider hover:bg-yellow-400 hover:scale-105 transition-all shadow-[0_0_25px_rgba(254,209,0,0.4)]">
+                  <span>DONATE ON GOFUNDME</span>
+                  <span>↗</span>
+                </a>
+                <button onclick="copyLink('https://gofund.me/297ce37b2')" class="px-4 py-3.5 rounded-xl bg-zinc-800 text-zinc-200 border border-zinc-600/60 text-xs sm:text-sm font-semibold hover:bg-zinc-700 transition-all">
+                  COPY DONATION LINK
+                </button>
+              </div>
+            </div>
+
+            <!-- Right 5 Cols: Real QR Code -->
+            <div class="lg:col-span-5 flex flex-col items-center">
+              <div class="w-full max-w-sm rounded-2xl bg-black border-2 border-[#FED100]/40 p-5 shadow-2xl text-center space-y-4">
+                <div class="text-xs font-bold text-[#FED100] uppercase tracking-wider">
+                  INSTANT MOBILE DONATION
+                </div>
+                <div class="p-2 rounded-xl bg-white shadow-md inline-block">
+                  <img src="/assets/aistudio/QR_Code_7996fe3f.png" alt="Scan to donate QR code" class="w-56 h-56 sm:w-64 sm:h-64 object-contain rounded-lg" />
+                </div>
+                <p class="text-xs text-zinc-300">Point your smartphone camera at the code to donate instantly</p>
+                <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer"
+                   class="w-full py-2.5 px-4 rounded-xl bg-[#009B3A] text-white text-xs font-bold uppercase tracking-wider block hover:bg-[#008230] transition-colors">
+                  OPEN GOFUNDME PAGE ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event-info" class="relative py-16 md:py-24 bg-[#0c0d10]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#009B3A]/15 border border-[#009B3A]/40 text-xs font-bold text-[#009B3A] uppercase tracking-wider">
+            LIVE CONCERT PROGRAMME &amp; EXPERIENCE
+          </div>
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-headline tracking-tight text-white uppercase">
+            EVERYTHING YOU NEED <span class="text-[#FED100]">TO KNOW</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <!-- Card 1 -->
+          <div class="rounded-2xl bg-zinc-900/90 border border-white/10 p-6 flex flex-col justify-between shadow-xl">
+            <div class="space-y-4">
+              <span class="text-[11px] font-bold text-[#FED100] uppercase font-mono">SCHEDULED</span>
+              <h3 class="text-2xl font-headline uppercase text-white">Sunday, Dec 20, 2026</h3>
+              <div class="text-sm font-semibold text-[#FED100]">5:00 PM Sharp</div>
+              <p class="text-xs text-zinc-400">Doors open early for seating, authentic Jamaican food, and sound system warm-up.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5">
+              <button onclick="downloadCalendarInvite()" class="w-full py-2 px-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold">
+                Save to Calendar (.ICS)
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="rounded-2xl bg-zinc-900/90 border border-white/10 p-6 flex flex-col justify-between shadow-xl">
+            <div class="space-y-4">
+              <span class="text-[11px] font-bold text-white uppercase font-mono bg-[#012169] px-2 py-0.5 rounded">UK B45</span>
+              <h3 class="text-2xl font-headline uppercase text-white">The Dingle, B45 0BP</h3>
+              <div class="text-xs text-zinc-300">Birmingham / West Midlands Venue</div>
+              <p class="text-xs text-zinc-400">Spacious community music hall with full sound rig and dedicated dance floor.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5">
+              <a href="https://www.google.com/maps/search/?api=1&query=The+Dingle+B45+0BP" target="_blank" rel="noopener noreferrer" class="w-full block text-center py-2 px-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold">
+                Open in Google Maps ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="rounded-2xl bg-zinc-900/90 border border-white/10 p-6 flex flex-col justify-between shadow-xl">
+            <div class="space-y-4">
+              <span class="text-[11px] font-bold text-[#009B3A] uppercase font-mono">SOUND SYSTEM</span>
+              <h3 class="text-2xl font-headline uppercase text-white">DJ Jah Macka</h3>
+              <div class="text-xs text-zinc-300">Roots, Dub, Dancehall &amp; Lovers Rock</div>
+              <p class="text-xs text-zinc-400">DJ Jah Macka powers the sound system with authentic reggae basslines from start to finish.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5">
+              <button onclick="playDubHorn()" class="w-full py-2 px-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-[#FED100] text-xs font-bold uppercase">
+                Trigger Dub Siren FX 🔊
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="rounded-2xl bg-zinc-900/90 border border-white/10 p-6 flex flex-col justify-between shadow-xl">
+            <div class="space-y-4">
+              <span class="text-xs font-bold text-white bg-[#009B3A] px-2.5 py-0.5 rounded-full font-mono">£10 DOOR</span>
+              <h3 class="text-2xl font-headline uppercase text-white">Entry: £10 at the Door</h3>
+              <div class="text-xs text-zinc-300">Affordable community admission</div>
+              <p class="text-xs text-zinc-400">Tickets available at the door on entry. Cash and card accepted.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] text-zinc-400">
+              Arrive early to secure prime viewing
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="rounded-2xl bg-zinc-900/90 border border-white/10 p-6 flex flex-col justify-between shadow-xl">
+            <div class="space-y-4">
+              <span class="text-[11px] font-bold text-[#FED100] uppercase font-mono">CARIBBEAN CUISINE</span>
+              <h3 class="text-2xl font-headline uppercase text-white">Authentic Jamaican Food</h3>
+              <div class="text-xs text-zinc-300">Freshly prepared hot Caribbean food</div>
+              <p class="text-xs text-zinc-400">Authentic Jamaican jerk seasoning on sale: Jerk Chicken, Jamaican patties, rice &amp; peas, festival, and fried plantain.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] text-[#FED100] font-semibold">
+              Jerk Chicken · Patties · Rice &amp; Peas
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="rounded-2xl bg-zinc-900/90 border border-white/10 p-6 flex flex-col justify-between shadow-xl">
+            <div class="space-y-4">
+              <span class="text-[11px] font-bold text-white uppercase font-mono bg-[#012169] px-2 py-0.5 rounded">BARS OPEN</span>
+              <h3 class="text-2xl font-headline uppercase text-white">Fully Licensed Bars</h3>
+              <div class="text-xs text-zinc-300">Chilled drinks &amp; Caribbean favorites</div>
+              <p class="text-xs text-zinc-400">Full bar service open throughout the night featuring Red Stripe, rum punch, spirits, and soft drinks.</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-white/5 text-[11px] text-zinc-300">
+              Red Stripe &amp; Jamaican Rum Punch
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Videos Section -->
+    <section id="music" class="relative py-16 md:py-24 bg-[#0a0b0d]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+          <div class="text-xs font-bold uppercase tracking-widest text-[#009B3A]">DISCOGRAPHY &amp; LIVE SESSIONS</div>
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-headline tracking-tight text-white uppercase">
+            MUSIC &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FED100] to-[#009B3A]">PERFORMANCES</span>
+          </h2>
+          <p class="text-sm text-zinc-400 max-w-xl">
+            Experience Misa West’s vocal delivery and live performance recordings ahead of Sunday, December 20, 2026.
+          </p>
+        </div>
+
+        <!-- 3 YouTube Video Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Video 1 -->
+          <div class="rounded-2xl bg-zinc-950 border border-white/10 p-4 space-y-3">
+            <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+              <iframe class="w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/_f-8At8eCi0" title="Misa West Video 1" allowfullscreen></iframe>
+            </div>
+            <div class="text-xs font-bold text-[#FED100] uppercase">Featured Release</div>
+            <h3 class="text-lg font-headline uppercase text-white">Misa West — Official Video</h3>
+            <a href="https://youtu.be/_f-8At8eCi0?si=7vxNFXCE8VU2Ahwl" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-white block">
+              Watch on YouTube ↗
+            </a>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="rounded-2xl bg-zinc-950 border border-white/10 p-4 space-y-3">
+            <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+              <iframe class="w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/PT8ukSbmuuQ" title="Misa West Video 2" allowfullscreen></iframe>
+            </div>
+            <div class="text-xs font-bold text-[#009B3A] uppercase">Live Performance</div>
+            <h3 class="text-lg font-headline uppercase text-white">Misa West — Live Studio Session</h3>
+            <a href="https://youtu.be/PT8ukSbmuuQ?si=H7X0M8JHUv0xa5tz" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-white block">
+              Watch on YouTube ↗
+            </a>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="rounded-2xl bg-zinc-950 border border-white/10 p-4 space-y-3">
+            <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+              <iframe class="w-full h-full border-0" src="https://www.youtube-nocookie.com/embed/NobIhBZJPSQ" title="Misa West Video 3" allowfullscreen></iframe>
+            </div>
+            <div class="text-xs font-bold text-[#C8102E] uppercase">Session &amp; Vocals</div>
+            <h3 class="text-lg font-headline uppercase text-white">Misa West — Acoustic &amp; Vocal Session</h3>
+            <a href="https://youtu.be/NobIhBZJPSQ?si=68z-9U5Y_xcOuMJi" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-white block">
+              Watch on YouTube ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue & Directions Section -->
+    <section id="venue" class="relative py-16 md:py-24 bg-[#090a0d]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div class="lg:col-span-6 space-y-6">
+            <div class="space-y-2">
+              <div class="text-xs font-bold uppercase tracking-widest text-[#C8102E]">LOCATION &amp; ARRIVAL</div>
+              <h2 class="text-4xl sm:text-5xl font-headline tracking-tight text-white uppercase">THE DINGLE, <span class="text-[#FED100]">B45 0BP</span></h2>
+              <p class="text-sm text-zinc-300">Join us in the West Midlands for an electric evening of live roots reggae music.</p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-zinc-900 border border-white/10 space-y-4">
+              <div>
+                <div class="text-xs uppercase font-bold text-zinc-400">Venue Address</div>
+                <div class="text-xl font-bold text-white mt-1">The Dingle</div>
+                <div class="text-sm font-semibold text-[#FED100]">Postcode: B45 0BP</div>
+              </div>
+              <div class="flex gap-2">
+                <button onclick="copyLink('B45 0BP')" class="px-3 py-2 rounded-xl bg-zinc-800 text-xs font-semibold text-zinc-200">
+                  Copy Postcode
+                </button>
+                <a href="https://www.google.com/maps/search/?api=1&query=The+Dingle+B45+0BP" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-[#012169] text-xs font-bold text-white uppercase">
+                  Directions in Google Maps ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-3">
+            <div class="text-xs font-bold uppercase tracking-widest text-[#009B3A]">ESSENTIAL CONCERT FAQ</div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+              <div class="text-sm font-bold text-white">How much is admission at the door?</div>
+              <p class="text-xs text-zinc-400">Admission is £10 at the door on the night. Cash and card accepted.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+              <div class="text-sm font-bold text-white">What time should I arrive?</div>
+              <p class="text-xs text-zinc-400">The event starts at 5:00 PM sharp with DJ Jah Macka powering the sound system.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-white/10 space-y-1">
+              <div class="text-sm font-bold text-white">What food and drinks will be served?</div>
+              <p class="text-xs text-zinc-400">Authentic Jamaican Jerk chicken, patties, rice &amp; peas, plus licensed bars serving Red Stripe and rum punch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer with 6 Colors -->
+  <footer class="bg-black text-zinc-400 border-t border-white/10">
+    <div class="w-full flex h-2">
+      <div class="flex-[3] bg-[#009B3A]"></div>
+      <div class="flex-[2] bg-[#FED100]"></div>
+      <div class="flex-[1.5] bg-[#111111]"></div>
+      <div class="flex-[2] bg-[#C8102E]"></div>
+      <div class="flex-[1] bg-[#FFFFFF]"></div>
+      <div class="flex-[2] bg-[#012169]"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center space-y-4">
+      <div class="text-3xl font-headline tracking-wide text-white uppercase">MISA <span class="text-[#FED100]">WEST</span></div>
+      <p class="text-xs text-zinc-400">Official fundraising campaign for Misa West Live in Concert at The Dingle, B45 0BP. Target: £1,600. Sunday, Dec 20, 2026 at 5 PM.</p>
+      <div class="text-xs text-zinc-500">© 2026 Misa West Live in Concert. All rights reserved. One Love.</div>
+    </div>
+  </footer>
+
+  <!-- Scan QR Modal -->
+  <div id="donate-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-lg rounded-3xl bg-zinc-950 border border-white/20 p-6 sm:p-8 shadow-2xl text-center space-y-6">
+      <button onclick="closeDonateModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white">✕</button>
+      <div class="space-y-1">
+        <h3 class="text-3xl font-headline text-white uppercase">MISA WEST LIVE IN CONCERT</h3>
+        <p class="text-xs text-zinc-400">Fundraising Target: <strong class="text-[#FED100]">£1,600</strong></p>
+      </div>
+      <div class="p-3 bg-white rounded-2xl inline-block border-4 border-[#FED100]">
+        <img src="/assets/aistudio/QR_Code_7996fe3f.png" alt="GoFundMe QR Code" class="w-56 h-56 object-contain" />
+      </div>
+      <div class="space-y-2">
+        <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer" class="w-full block py-3 px-6 rounded-xl bg-gradient-to-r from-[#FED100] to-[#009B3A] text-black font-extrabold text-sm uppercase">
+          CONTINUE TO GOFUNDME ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Live Countdown
+    const targetDate = new Date('2026-12-20T17:00:00Z').getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff > 0) {
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+      }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Modal controls
+    function openDonateModal() { document.getElementById('donate-modal').classList.remove('hidden'); }
+    function closeDonateModal() { document.getElementById('donate-modal').classList.add('hidden'); }
+
+    // Copy to clipboard
+    function copyLink(text) {
+      navigator.clipboard.writeText(text);
+      alert('Copied to clipboard: ' + text);
+    }
+
+    // .ICS Calendar Download
+    function downloadCalendarInvite() {
+      const icsData = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Misa West Concert//EN',
+        'BEGIN:VEVENT',
+        'UID:misa-west-20261220@live',
+        'DTSTART:20261220T170000Z',
+        'DTEND:20261220T230000Z',
+        'SUMMARY:Misa West Live in Concert — Reggae Fundraiser',
+        'DESCRIPTION:Live reggae at The Dingle with DJ Jah Macka, Jamaican food, open bars. Entry £10. Donate: https://gofund.me/297ce37b2',
+        'LOCATION:The Dingle, B45 0BP',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\\r\\n');
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Misa_West_Live_Concert.ics';
+      link.click();
+    }
+
+    // Reggae Dub Siren Web Audio Synthesizer
+    let audioCtx = null;
+    function playDubHorn() {
+      try {
+        const AudioClass = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioClass();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const delay = audioCtx.createDelay();
+        delay.delayTime.value = 0.2;
+        const feedback = audioCtx.createGain();
+        feedback.gain.value = 0.4;
+        delay.connect(feedback);
+        feedback.connect(delay);
+        const now = audioCtx.currentTime;
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.15);
+        osc.frequency.exponentialRampToValueAtTime(330, now + 0.35);
+        osc.frequency.exponentialRampToValueAtTime(660, now + 0.6);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        gain.connect(delay);
+        delay.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.0);
+      } catch (e) {}
+    }
+
+    // Gold Sparkles Particle System
+    const canvas = document.getElementById('sparkle-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+      window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
+      const particles = Array.from({ length: 35 }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        size: Math.random() * 2.5 + 0.8,
+        speedY: -(Math.random() * 0.7 + 0.3),
+        speedX: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.7 + 0.2,
+        color: Math.random() > 0.4 ? '#FED100' : '#009B3A'
+      }));
+      function render() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          p.y += p.speedY; p.x += p.speedX;
+          if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          ctx.fill();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    }
+  </script>
+</body>
+</html>

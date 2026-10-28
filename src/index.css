@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --jam-green: #009B3A;
+    --jam-gold: #FED100;
+    --jam-black: #111111;
+    --uk-red: #C8102E;
+    --uk-white: #FFFFFF;
+    --uk-blue: #012169;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0c0d10;
+    color: #f3f4f6;
+  }
+
+  h1, h2, h3, .font-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  .font-display {
+    font-family: 'Syne', sans-serif;
+  }
+}
+
+/* Stage Lighting Animations */
+@keyframes sweep-left {
+  0%, 100% {
+    transform: rotate(-28deg) scaleY(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: rotate(-12deg) scaleY(1.2);
+    opacity: 0.85;
+  }
+}
+
+@keyframes sweep-right {
+  0%, 100% {
+    transform: rotate(28deg) scaleY(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: rotate(14deg) scaleY(1.2);
+    opacity: 0.85;
+  }
+}
+
+@keyframes sweep-center-gold {
+  0%, 100% {
+    transform: rotate(-8deg) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: rotate(8deg) scale(1.15);
+    opacity: 0.95;
+  }
+}
+
+@keyframes pulse-haze {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-sparkle {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(0.8);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-160px) translateX(25px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-sweep-left {
+  animation: sweep-left 8s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+
+.animate-sweep-right {
+  animation: sweep-right 9s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+
+.animate-sweep-gold {
+  animation: sweep-center-gold 7s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+
+.animate-pulse-haze {
+  animation: pulse-haze 6s ease-in-out infinite;
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 28s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-sweep-left,
+  .animate-sweep-right,
+  .animate-sweep-gold,
+  .animate-pulse-haze,
+  .animate-ticker {
+    animation: none !important;
+  }
+}
+
+/* Jamaican & British Flag Motif Utilities */
+.flag-accent-gradient {
+  background: linear-gradient(
+    90deg,
+    #009B3A 0%,
+    #009B3A 30%,
+    #FED100 30%,
+    #FED100 48%,
+    #111111 48%,
+    #111111 52%,
+    #FED100 52%,
+    #FED100 70%,
+    #009B3A 70%,
+    #009B3A 100%
+  );
+}
+
+.heritage-bar {
+  background: linear-gradient(
+    90deg,
+    #009B3A 0%,
+    #009B3A 33.3%,
+    #FED100 33.3%,
+    #FED100 50%,
+    #111111 50%,
+    #111111 60%,
+    #C8102E 60%,
+    #C8102E 78%,
+    #FFFFFF 78%,
+    #FFFFFF 83%,
+    #012169 83%,
+    #012169 100%
+  );
+}

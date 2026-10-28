@@ -1,0 +1,6 @@
+{
+  "name": "Misa West Live in Concert — Reggae Fundraiser",
+  "description": "Official event website and fundraising campaign for Misa West Live in Concert at The Dingle, featuring DJ Jah Macka, Jamaican food, music videos, and GoFundMe campaign.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
