@@ -66,15 +66,21 @@ export const DonateModal: React.FC<DonateModalProps> = ({ isOpen, onClose }) => 
 
         {/* QR Code Container */}
         <div className="flex flex-col items-center">
-          <div className="p-3 bg-white rounded-2xl shadow-xl max-w-xs border-4 border-[#FED100]">
+          <a
+            href={donationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-white rounded-2xl shadow-xl max-w-xs border-4 border-[#FED100] block hover:scale-105 transition-transform"
+            title="Click to open GoFundMe campaign directly"
+          >
             <img
               src="/assets/aistudio/QR_Code_7996fe3f.png"
               alt="GoFundMe Scan to Donate QR Code"
               className="w-56 h-56 object-contain"
             />
-          </div>
+          </a>
           <span className="text-[11px] text-zinc-400 mt-2">
-            Scan with smartphone camera to donate immediately
+            Click image or scan with smartphone camera to donate
           </span>
         </div>
 

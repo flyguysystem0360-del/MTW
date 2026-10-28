@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, ExternalLink, Music2, Disc, Radio, AlertCircle } from 'lucide-react';
+import { Play, ExternalLink, Disc, Radio, AlertCircle } from 'lucide-react';
 import { HeritageBar } from './HeritageBar';
 import type { VideoTrack } from '../types';
 
@@ -38,13 +38,18 @@ export const MusicSection: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'feature' | 'live' | 'release'>('all');
   const [hasEmbedError, setHasEmbedError] = useState(false);
 
+  const handleSelectTrack = (track: VideoTrack) => {
+    setActiveTrack(track);
+    setHasEmbedError(false);
+  };
+
   const filteredTracks = filter === 'all'
     ? tracks
     : tracks.filter((t) => t.category === filter);
 
   return (
     <section id="music" className="relative py-16 md:py-24 bg-[#0a0b0d] overflow-hidden">
-      {/* Background concert lighting overlay */}
+      {/* Background concert lighting wash */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#009B3A]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#FED100]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -57,7 +62,7 @@ export const MusicSection: React.FC = () => {
               <span>DISCOGRAPHY &amp; LIVE SESSIONS</span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-headline tracking-tight text-white uppercase">
-              MUSIC &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FED100] to-[#009B3A]">PERFORMANCES</span>
+              MUSIC &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FED100] via-[#009B3A] to-[#FED100]">PERFORMANCES</span>
             </h2>
             <p className="text-sm text-zinc-400 max-w-xl">
               Experience Misa West’s live vocal energy, official releases, and studio sessions ahead of Sunday, December 20, 2026.
@@ -70,7 +75,7 @@ export const MusicSection: React.FC = () => {
               onClick={() => setFilter('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 filter === 'all'
-                  ? 'bg-[#FED100] text-black shadow-md'
+                  ? 'bg-[#FED100] text-black shadow-md font-bold'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -80,7 +85,7 @@ export const MusicSection: React.FC = () => {
               onClick={() => setFilter('feature')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 filter === 'feature'
-                  ? 'bg-[#FED100] text-black shadow-md'
+                  ? 'bg-[#FED100] text-black shadow-md font-bold'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -90,7 +95,7 @@ export const MusicSection: React.FC = () => {
               onClick={() => setFilter('live')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 filter === 'live'
-                  ? 'bg-[#FED100] text-black shadow-md'
+                  ? 'bg-[#FED100] text-black shadow-md font-bold'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -100,7 +105,7 @@ export const MusicSection: React.FC = () => {
               onClick={() => setFilter('release')}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 filter === 'release'
-                  ? 'bg-[#FED100] text-black shadow-md'
+                  ? 'bg-[#FED100] text-black shadow-md font-bold'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
@@ -110,8 +115,8 @@ export const MusicSection: React.FC = () => {
         </div>
 
         {/* Main Stage Video Player Card */}
-        <div className="rounded-3xl bg-zinc-950 border border-white/10 shadow-2xl overflow-hidden mb-8">
-          <HeritageBar height="h-1.5" />
+        <div className="rounded-3xl bg-zinc-950 border border-white/15 shadow-2xl overflow-hidden mb-8">
+          <HeritageBar height="h-2" />
 
           <div className="p-4 sm:p-6 lg:p-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
@@ -120,7 +125,7 @@ export const MusicSection: React.FC = () => {
                 <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black border border-white/10 shadow-inner group">
                   <iframe
                     key={activeTrack.youtubeId}
-                    src={`https://www.youtube-nocookie.com/embed/${activeTrack.youtubeId}?rel=0&modestbranding=1`}
+                    src={`https://www.youtube-nocookie.com/embed/${activeTrack.youtubeId}?rel=0&modestbranding=1&autoplay=0`}
                     title={activeTrack.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -132,7 +137,7 @@ export const MusicSection: React.FC = () => {
                     <div className="absolute inset-0 bg-black/90 flex flex-col items-center justify-center p-6 text-center">
                       <AlertCircle className="w-8 h-8 text-[#FED100] mb-2" />
                       <p className="text-sm text-zinc-300 mb-3">
-                        If embed is restricted by your browser, watch directly on YouTube.
+                        If third-party embeds are restricted in your browser, watch directly on YouTube.
                       </p>
                       <a
                         href={activeTrack.url}
@@ -140,7 +145,7 @@ export const MusicSection: React.FC = () => {
                         rel="noopener noreferrer"
                         className="px-4 py-2 rounded-lg bg-[#FED100] text-black font-bold text-xs uppercase"
                       >
-                        Watch on YouTube
+                        Watch on YouTube ↗
                       </a>
                     </div>
                   )}
@@ -167,14 +172,14 @@ export const MusicSection: React.FC = () => {
                     href={activeTrack.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-white/10 text-xs font-semibold uppercase tracking-wider transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#012169] hover:bg-[#022c8a] text-white border border-blue-400/30 text-xs font-semibold uppercase tracking-wider transition-all"
                   >
                     <span>OPEN ON YOUTUBE</span>
                     <ExternalLink className="w-3.5 h-3.5 text-[#FED100]" />
                   </a>
 
                   <div className="text-[11px] text-zinc-500 font-mono">
-                    YouTube ID: {activeTrack.youtubeId}
+                    Track URL: {activeTrack.url}
                   </div>
                 </div>
               </div>
@@ -189,11 +194,11 @@ export const MusicSection: React.FC = () => {
             return (
               <div
                 key={track.id}
-                onClick={() => setActiveTrack(track)}
+                onClick={() => handleSelectTrack(track)}
                 className={`group cursor-pointer rounded-2xl p-4 transition-all duration-300 text-left border relative overflow-hidden ${
                   isCurrent
-                    ? 'bg-zinc-900 border-[#FED100] shadow-[0_0_20px_rgba(254,209,0,0.2)]'
-                    : 'bg-zinc-950/70 border-white/10 hover:border-white/30 hover:bg-zinc-900/60'
+                    ? 'bg-zinc-900 border-[#FED100] shadow-[0_0_20px_rgba(254,209,0,0.25)]'
+                    : 'bg-zinc-950/80 border-white/10 hover:border-white/30 hover:bg-zinc-900/70'
                 }`}
               >
                 {/* Active Indicator Top Edge */}
@@ -207,18 +212,17 @@ export const MusicSection: React.FC = () => {
                     src={`https://img.youtube.com/vi/${track.youtubeId}/hqdefault.jpg`}
                     alt={track.title}
                     onError={(e) => {
-                      // Fallback image if youtube thumbnail fails
                       (e.target as HTMLImageElement).src = '/assets/aistudio/YttRJy_H7K2ab7YJN_b1fd5244.jpg';
                     }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className={`p-3 rounded-full transition-transform ${isCurrent ? 'bg-[#FED100] text-black scale-110 shadow-lg' : 'bg-black/70 text-white group-hover:scale-110'}`}>
+                    <div className={`p-3 rounded-full transition-transform ${isCurrent ? 'bg-[#FED100] text-black scale-110 shadow-lg' : 'bg-black/75 text-white group-hover:scale-110'}`}>
                       <Play className="w-4 h-4 fill-current ml-0.5" />
                     </div>
                   </div>
 
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/80 text-[10px] font-bold text-zinc-300 backdrop-blur-sm">
+                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/85 text-[10px] font-bold text-zinc-200 backdrop-blur-sm">
                     {track.categoryLabel}
                   </div>
                 </div>
@@ -230,7 +234,7 @@ export const MusicSection: React.FC = () => {
                     </h4>
                     {isCurrent && (
                       <span className="text-[10px] font-bold text-[#009B3A] uppercase font-mono">
-                        PLAYING
+                        NOW PLAYING
                       </span>
                     )}
                   </div>

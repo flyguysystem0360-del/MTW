@@ -10,6 +10,8 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Sparkles,
+  Camera,
+  Check,
 } from 'lucide-react';
 import { CulturalMotifBadge, HeritageBar } from './HeritageBar';
 import { downloadCalendarInvite } from '../utils/calendar';
@@ -21,6 +23,40 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }) => {
+  // Real Misa West verified portraits provided by the artist/campaign
+  const artistPortraits = [
+    {
+      id: 'suit',
+      title: 'Concert Look',
+      description: 'Misa West in signature leopard velvet blazer & sunglasses',
+      src: '/assets/aistudio/Misa_West__3__190f2c01.png',
+      objectFit: 'contain' as const,
+    },
+    {
+      id: 'studio',
+      title: 'Studio Lighting',
+      description: 'Misa West in studio headphones under concert stage wash',
+      src: '/assets/aistudio/Misa_West__2__922cb871.png',
+      objectFit: 'contain' as const,
+    },
+    {
+      id: 'headshot',
+      title: 'Close-Up',
+      description: 'Misa West official artist headshot portrait',
+      src: '/assets/aistudio/Misa_West__1__b3b08678.png',
+      objectFit: 'contain' as const,
+    },
+    {
+      id: 'campaign',
+      title: 'Campaign Portrait',
+      description: 'Original GoFundMe campaign photo by Craig West',
+      src: '/assets/aistudio/Fundraiser-by-Craig-West-Misa-West-live-in-Concert-10-26-2026_06_40_PM_f00aed6c.png',
+      objectFit: 'cover' as const,
+    },
+  ];
+
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
+
   // Live Countdown to Sunday, December 20, 2026, 17:00:00 GMT
   const targetDate = new Date('2026-12-20T17:00:00Z').getTime();
 
@@ -61,17 +97,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
     setTimeout(() => setSoundFeedback(false), 900);
   };
 
+  const currentPhoto = artistPortraits[selectedPhotoIndex];
+
   return (
     <section className="relative pt-6 pb-16 md:pt-12 md:pb-24 overflow-hidden">
-      {/* Background Concert Imagery with Warm Stage Lighting */}
+      {/* Background Concert Crowd & Atmospheric Lighting */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="/assets/aistudio/EYAb3uo9we__u7J_730b7364.jpg"
-          alt="Live reggae concert atmosphere"
-          className="w-full h-full object-cover object-top opacity-30 mix-blend-luminosity filter contrast-125 scale-105"
+          alt="Live reggae concert audience waving Jamaican flags and stage atmosphere"
+          className="w-full h-full object-cover object-top opacity-25 mix-blend-luminosity filter contrast-125 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-[#0c0d10]/85 to-transparent" />
-        <div className="absolute inset-0 bg-radial-at-c from-transparent via-[#0c0d10]/70 to-[#0c0d10]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-[#0c0d10]/90 to-transparent" />
+        <div className="absolute inset-0 bg-radial-at-c from-transparent via-[#0c0d10]/75 to-[#0c0d10]" />
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,15 +120,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
           <button
             onClick={handleDubHorn}
             title="Sound System FX - Authentic Dub Siren"
-            className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border ${
               soundFeedback
                 ? 'bg-[#FED100] text-black border-[#FED100] shadow-[0_0_20px_rgba(254,209,0,0.8)] scale-105'
-                : 'bg-zinc-900/80 text-zinc-300 border-zinc-700/80 hover:border-[#FED100]/60 hover:text-[#FED100]'
+                : 'bg-zinc-900/90 text-zinc-300 border-zinc-700/80 hover:border-[#FED100]/60 hover:text-[#FED100]'
             }`}
           >
             <Volume2 className="w-3.5 h-3.5 text-[#009B3A]" />
             <span>SOUND SYSTEM CHECK</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/60 text-[#FED100] font-mono">
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/70 text-[#FED100] font-mono font-bold">
               SIREN FX
             </span>
           </button>
@@ -106,11 +144,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
                 <span className="w-2 h-2 rounded-full bg-[#009B3A] animate-ping" />
                 <span>OFFICIAL LIVE CONCERT &amp; FUNDRAISER</span>
                 <span className="text-zinc-500">·</span>
-                <span className="text-[#C8102E]">UK &amp; JAMAICA UNITED</span>
+                <span className="text-[#C8102E] font-bold">JAMAICA × UK UNITED</span>
               </div>
 
               {/* Dominant Artist Identity */}
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline tracking-tight text-white uppercase leading-[0.88] drop-shadow-lg">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline tracking-tight text-white uppercase leading-[0.88] drop-shadow-xl">
                 MISA <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FED100] via-[#009B3A] to-[#FED100]">WEST</span>
               </h1>
 
@@ -119,12 +157,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
               </p>
             </div>
 
-            {/* Event Key Facts Bar */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-900/90 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden">
+            {/* Event Key Facts Bar with Visible 6-Color Accents */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-900/95 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#009B3A] via-[#FED100] to-[#C8102E]" />
 
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-[#009B3A]/20 text-[#009B3A] border border-[#009B3A]/30">
+                <div className="p-2.5 rounded-xl bg-[#009B3A]/20 text-[#009B3A] border border-[#009B3A]/40">
                   <Calendar className="w-5 h-5" />
                 </div>
                 <div>
@@ -134,7 +172,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-[#FED100]/20 text-[#FED100] border border-[#FED100]/30">
+                <div className="p-2.5 rounded-xl bg-[#FED100]/20 text-[#FED100] border border-[#FED100]/40">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
@@ -144,7 +182,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-[#C8102E]/20 text-[#C8102E] border border-[#C8102E]/30">
+                <div className="p-2.5 rounded-xl bg-[#C8102E]/20 text-[#C8102E] border border-[#C8102E]/40">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -156,10 +194,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
 
             {/* Campaign Summary & Mission statement */}
             <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-sans max-w-2xl">
-              Experience the pulse of authentic Jamaican roots reggae and sound system culture live on stage.
-              Join us at The Dingle for an unforgettable community celebration powered by selector{' '}
-              <strong className="text-white font-semibold">DJ Jah Macka</strong>, delicious authentic Jamaican food,
-              licensed bars, and real community vibes. All contributions support our £1,600 concert production target.
+              Experience the pulse of authentic Jamaican roots reggae and sound system culture live on stage in the UK.
+              Join us at The Dingle for an unforgettable community celebration powered by sound system selector{' '}
+              <strong className="text-white font-semibold">DJ Jah Macka</strong>, delicious authentic Jamaican jerk food on sale,
+              licensed bars, and real community unity. All contributions support our £1,600 concert production target.
             </p>
 
             {/* Primary Action Buttons */}
@@ -169,7 +207,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
                 href="https://gofund.me/297ce37b2"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] via-[#ffd726] to-[#009B3A] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_rgba(254,209,0,0.45)] hover:shadow-[0_0_40px_rgba(254,209,0,0.7)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] via-[#ffd726] to-[#009B3A] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_rgba(254,209,0,0.5)] hover:shadow-[0_0_40px_rgba(254,209,0,0.8)] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <HeartHandshake className="w-5 h-5 text-black" />
                 <span>SUPPORT THE CAMPAIGN</span>
@@ -180,7 +218,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
               <button
                 type="button"
                 onClick={onOpenDonateModal}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/80 hover:border-[#FED100] text-sm font-semibold transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700 hover:border-[#FED100] text-sm font-semibold transition-all"
               >
                 <span>SCAN QR / £1,600 GOAL</span>
               </button>
@@ -189,7 +227,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
               <button
                 type="button"
                 onClick={onExploreVideos}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#012169]/90 hover:bg-[#012169] text-white border border-white/20 hover:border-white text-sm font-semibold transition-all shadow-md"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#012169] hover:bg-[#022c8a] text-white border border-blue-400/30 hover:border-white text-sm font-semibold transition-all shadow-md"
               >
                 <Play className="w-4 h-4 text-[#FED100] fill-[#FED100]" />
                 <span>EXPLORE MUSIC VIDEOS</span>
@@ -199,7 +237,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
               <button
                 type="button"
                 onClick={downloadCalendarInvite}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-white/10 text-sm font-medium transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-white/10 text-sm font-medium transition-all"
                 title="Download .ics calendar reminder"
               >
                 <CalendarPlus className="w-4 h-4 text-[#009B3A]" />
@@ -214,62 +252,97 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
                 <span>£10 Entry at the Door</span>
               </span>
               <span className="text-zinc-600">·</span>
-              <span className="text-zinc-300">Jamaican Jerk Food On Sale</span>
+              <span className="text-zinc-300">Authentic Jamaican Food On Sale</span>
               <span className="text-zinc-600">·</span>
               <span className="text-zinc-300">Open Bars</span>
               <span className="text-zinc-600">·</span>
-              <span className="text-[#FED100] font-semibold">Goal: £1,600</span>
+              <span className="text-[#FED100] font-semibold">Fundraising Goal: £1,600</span>
             </div>
           </div>
 
-          {/* Right Column: Verified Artist Portrait & Live Countdown (5 Cols) */}
+          {/* Right Column: Verified Real Artist Portrait & Live Countdown (5 Cols) */}
           <div className="lg:col-span-5 relative">
             {/* Ambient Backlight Halo behind Artist */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[#009B3A]/30 via-[#FED100]/25 to-[#C8102E]/25 rounded-3xl blur-2xl opacity-75" />
+            <div className="absolute -inset-4 bg-gradient-to-tr from-[#009B3A]/35 via-[#FED100]/30 to-[#C8102E]/30 rounded-3xl blur-2xl opacity-80" />
 
             {/* Main Artist Card */}
-            <div className="relative rounded-3xl bg-zinc-950/90 border border-white/15 overflow-hidden shadow-2xl backdrop-blur-xl">
-              {/* Top Accent Strip */}
+            <div className="relative rounded-3xl bg-zinc-950/95 border border-white/20 overflow-hidden shadow-2xl backdrop-blur-xl">
+              {/* Top 6-Color Accent Strip */}
               <HeritageBar height="h-2" />
 
               {/* Verified Portrait Container */}
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-zinc-900 group">
+              <div className="relative aspect-[4/3] sm:aspect-[16/12] overflow-hidden bg-gradient-to-b from-zinc-900 to-black group flex items-center justify-center">
+                {/* Stage Lighting Halo inside card */}
+                <div className="absolute inset-0 bg-radial-at-t from-[#FED100]/20 via-[#009B3A]/10 to-transparent pointer-events-none" />
+
                 <img
-                  src="/assets/aistudio/Fundraiser-by-Craig-West-Misa-West-live-in-Concert-10-26-2026_06_40_PM_f00aed6c.png"
-                  alt="Misa West portrait - Official concert artist"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  key={currentPhoto.src}
+                  src={currentPhoto.src}
+                  alt={`Misa West - ${currentPhoto.description}`}
+                  className={`w-full h-full ${
+                    currentPhoto.objectFit === 'contain'
+                      ? 'object-contain p-2'
+                      : 'object-cover object-center'
+                  } group-hover:scale-105 transition-transform duration-700`}
                 />
 
-                {/* Soft Lens Flare & Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/30" />
+                {/* Subtle bottom vignette to ensure typography contrast */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none" />
 
-                {/* Verified Artist Pill Badge */}
-                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 border border-[#FED100]/50 backdrop-blur-md text-[11px] font-bold text-[#FED100]">
+                {/* Verified Artist Badge */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 border border-[#FED100]/60 backdrop-blur-md text-[11px] font-bold text-[#FED100]">
                   <Sparkles className="w-3.5 h-3.5 text-[#FED100]" />
-                  <span>OFFICIAL ARTIST PORTRAIT</span>
+                  <span>OFFICIAL MISA WEST PHOTO</span>
                 </div>
 
-                {/* Stage Lighting Color Glow Corner */}
-                <div className="absolute top-3 right-3 flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#009B3A] shadow-[0_0_8px_#009B3A]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FED100] shadow-[0_0_8px_#FED100]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C8102E] shadow-[0_0_8px_#C8102E]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#012169] shadow-[0_0_8px_#012169]" />
+                {/* Six-Color Cultural Dot cluster */}
+                <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full bg-black/80 border border-white/10 backdrop-blur-md">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#009B3A] shadow-[0_0_8px_#009B3A]" title="Jamaican Green" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FED100] shadow-[0_0_8px_#FED100]" title="Jamaican Gold" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#111111] border border-white/30" title="Black" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C8102E] shadow-[0_0_8px_#C8102E]" title="British Red" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFFFFF]" title="White" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#012169] shadow-[0_0_8px_#012169]" title="British Blue" />
                 </div>
 
-                {/* Bottom Overlay Label */}
-                <div className="absolute bottom-3 inset-x-3 flex items-end justify-between">
+                {/* Bottom Overlay Artist Name & Live Date */}
+                <div className="absolute bottom-3 inset-x-3 flex items-end justify-between z-10">
                   <div>
-                    <div className="text-xl font-headline tracking-wide text-white drop-shadow">
+                    <div className="text-xl sm:text-2xl font-headline tracking-wide text-white drop-shadow-md">
                       MISA WEST
                     </div>
                     <div className="text-xs text-zinc-300 font-medium">
                       Lead Vocalist &amp; Reggae Artist
                     </div>
                   </div>
-                  <div className="px-2.5 py-1 rounded bg-[#009B3A]/90 border border-emerald-400/40 text-[11px] font-bold text-white shadow-md">
+                  <div className="px-3 py-1 rounded-lg bg-[#009B3A] border border-emerald-300/40 text-[11px] font-extrabold text-white shadow-lg">
                     LIVE DEC 20
                   </div>
+                </div>
+              </div>
+
+              {/* Verified Artist Portrait Switcher Tabs */}
+              <div className="px-4 py-2.5 bg-black/90 border-t border-b border-white/10 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-semibold">
+                  <Camera className="w-3.5 h-3.5 text-[#FED100]" />
+                  <span className="text-[11px] uppercase tracking-wider">Artist Portraits:</span>
+                </div>
+
+                <div className="flex items-center gap-1.5 overflow-x-auto">
+                  {artistPortraits.map((photo, idx) => (
+                    <button
+                      key={photo.id}
+                      onClick={() => setSelectedPhotoIndex(idx)}
+                      className={`px-2 py-1 rounded text-[10px] font-bold uppercase transition-all ${
+                        selectedPhotoIndex === idx
+                          ? 'bg-[#FED100] text-black shadow-sm'
+                          : 'bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700'
+                      }`}
+                      title={photo.description}
+                    >
+                      {photo.title}
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -280,7 +353,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDonateModal, onExploreVideos }
                     <Clock className="w-3.5 h-3.5 text-[#FED100]" />
                     <span>COUNTDOWN TO SHOWTIME</span>
                   </span>
-                  <span className="text-[#009B3A] font-mono">5:00 PM GMT</span>
+                  <span className="text-[#009B3A] font-mono font-bold">5:00 PM GMT</span>
                 </div>
 
                 {/* 4-Digit Timer Grid */}

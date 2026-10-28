@@ -47,15 +47,15 @@
   <style>
     /* Stage Lighting Keyframe Animations */
     @keyframes sweepLeft {
-      0%, 100% { transform: rotate(-26deg) scaleY(1); opacity: 0.65; }
+      0%, 100% { transform: rotate(-26deg) scaleY(1); opacity: 0.55; }
       50% { transform: rotate(-10deg) scaleY(1.2); opacity: 0.85; }
     }
     @keyframes sweepRight {
-      0%, 100% { transform: rotate(26deg) scaleY(1); opacity: 0.65; }
+      0%, 100% { transform: rotate(26deg) scaleY(1); opacity: 0.55; }
       50% { transform: rotate(12deg) scaleY(1.2); opacity: 0.85; }
     }
     @keyframes sweepGold {
-      0%, 100% { transform: rotate(-8deg) scale(1); opacity: 0.7; }
+      0%, 100% { transform: rotate(-8deg) scale(1); opacity: 0.65; }
       50% { transform: rotate(8deg) scale(1.15); opacity: 0.95; }
     }
     @keyframes pulseHaze {
@@ -83,39 +83,39 @@
 </head>
 <body class="bg-[#0b0c0e] text-[#f8fafc] antialiased selection:bg-[#FED100] selection:text-black min-h-screen overflow-x-hidden flex flex-col font-sans">
 
-  <!-- Volumetric Stage Spotlights and Golden Particles -->
-  <div id="stage-fx" aria-hidden="true" class="pointer-events-none fixed inset-0 z-10 overflow-hidden">
-    <!-- Top Stage Truss -->
-    <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-black via-zinc-950 to-transparent flex justify-around px-8 opacity-70">
-      <div class="w-8 h-2 bg-zinc-800 rounded-b shadow-[0_4px_12px_rgba(0,155,58,0.8)] border-b border-[#009B3A]"></div>
-      <div class="w-10 h-2 bg-zinc-800 rounded-b shadow-[0_4px_16px_rgba(254,209,0,0.9)] border-b border-[#FED100]"></div>
-      <div class="w-12 h-2.5 bg-zinc-700 rounded-b shadow-[0_6px_20px_rgba(254,209,0,1)] border-b border-[#FED100]"></div>
-      <div class="w-10 h-2 bg-zinc-800 rounded-b shadow-[0_4px_16px_rgba(200,16,46,0.8)] border-b border-[#C8102E]"></div>
-      <div class="w-8 h-2 bg-zinc-800 rounded-b shadow-[0_4px_12px_rgba(1,33,105,0.8)] border-b border-[#012169]"></div>
+  <!-- Volumetric Stage Spotlights and Golden Particles at z-30 pointer-events-none -->
+  <div id="stage-fx" aria-hidden="true" class="pointer-events-none fixed inset-0 z-30 overflow-hidden">
+    <!-- Top Stage Truss with Visible Lenses -->
+    <div class="absolute top-0 inset-x-0 h-5 bg-gradient-to-b from-black via-zinc-950/80 to-transparent flex justify-around items-start px-6 md:px-16 opacity-85">
+      <div class="w-10 h-3 bg-zinc-800 rounded-b border-b-2 border-[#009B3A] shadow-[0_4px_16px_#009B3A]"></div>
+      <div class="w-12 h-3.5 bg-zinc-800 rounded-b border-b-2 border-[#FED100] shadow-[0_6px_22px_#FED100]"></div>
+      <div class="w-14 h-4 bg-zinc-700 rounded-b border-b-2 border-[#FED100] shadow-[0_6px_25px_#FED100]"></div>
+      <div class="w-12 h-3.5 bg-zinc-800 rounded-b border-b-2 border-[#C8102E] shadow-[0_6px_22px_#C8102E]"></div>
+      <div class="w-10 h-3 bg-zinc-800 rounded-b border-b-2 border-[#012169] shadow-[0_4px_16px_#012169]"></div>
     </div>
 
     <!-- Jamaican Green Cone Beam -->
-    <div class="animate-sweep-left absolute -top-10 left-[12%] w-[180px] md:w-[320px] h-[95vh] blur-2xl opacity-40 mix-blend-screen"
-         style="background: linear-gradient(175deg, rgba(0, 155, 58, 0.75) 0%, rgba(0, 155, 58, 0.35) 45%, transparent 85%); clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);"></div>
+    <div class="animate-sweep-left absolute -top-8 left-[10%] md:left-[12%] w-[200px] md:w-[350px] h-[95vh] blur-xl opacity-45 mix-blend-screen"
+         style="background: linear-gradient(175deg, rgba(0, 155, 58, 0.85) 0%, rgba(0, 155, 58, 0.4) 40%, transparent 80%); clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);"></div>
 
     <!-- Jamaican Radiant Gold Center Beam -->
-    <div class="animate-sweep-gold absolute -top-10 left-[30%] w-[220px] md:w-[400px] h-[100vh] blur-xl opacity-50 mix-blend-screen"
-         style="background: linear-gradient(180deg, rgba(254, 209, 0, 0.85) 0%, rgba(254, 209, 0, 0.4) 50%, transparent 90%); clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);"></div>
+    <div class="animate-sweep-gold absolute -top-8 left-[26%] md:left-[28%] w-[240px] md:w-[440px] h-[100vh] blur-lg opacity-55 mix-blend-screen"
+         style="background: linear-gradient(180deg, rgba(254, 209, 0, 0.95) 0%, rgba(254, 209, 0, 0.45) 45%, transparent 85%); clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);"></div>
 
     <!-- Center Warm Flare -->
-    <div class="absolute top-[8%] left-1/2 -translate-x-1/2 w-[600px] md:w-[850px] h-[360px] rounded-full blur-[90px] opacity-25 mix-blend-screen"
-         style="background: radial-gradient(circle, rgba(254, 209, 0, 0.55) 0%, rgba(0, 155, 58, 0.25) 50%, rgba(200, 16, 46, 0.15) 75%, transparent 100%);"></div>
+    <div class="absolute top-[4%] left-1/2 -translate-x-1/2 w-[600px] md:w-[950px] h-[380px] rounded-full blur-[100px] opacity-30 mix-blend-screen"
+         style="background: radial-gradient(circle, rgba(254, 209, 0, 0.65) 0%, rgba(0, 155, 58, 0.3) 45%, rgba(200, 16, 46, 0.2) 70%, transparent 100%);"></div>
 
     <!-- British Red Spotlight Beam -->
-    <div class="animate-sweep-right absolute -top-10 right-[25%] w-[200px] md:w-[360px] h-[95vh] blur-2xl opacity-45 mix-blend-screen"
-         style="background: linear-gradient(185deg, rgba(200, 16, 46, 0.8) 0%, rgba(200, 16, 46, 0.35) 45%, transparent 85%); clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);"></div>
+    <div class="animate-sweep-right absolute -top-8 right-[22%] md:right-[24%] w-[220px] md:w-[400px] h-[95vh] blur-xl opacity-50 mix-blend-screen"
+         style="background: linear-gradient(185deg, rgba(200, 16, 46, 0.85) 0%, rgba(200, 16, 46, 0.4) 40%, transparent 80%); clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);"></div>
 
     <!-- British Blue Rim Wash Beam -->
-    <div class="absolute -top-10 right-[8%] w-[160px] md:w-[280px] h-[90vh] origin-top rotate-[26deg] blur-2xl opacity-35 mix-blend-screen"
-         style="background: linear-gradient(185deg, rgba(1, 33, 105, 0.9) 0%, rgba(1, 33, 105, 0.4) 45%, transparent 85%); clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);"></div>
+    <div class="absolute -top-8 right-[6%] md:right-[8%] w-[180px] md:w-[320px] h-[90vh] origin-top rotate-[24deg] blur-2xl opacity-40 mix-blend-screen"
+         style="background: linear-gradient(185deg, rgba(1, 33, 105, 0.95) 0%, rgba(1, 33, 105, 0.45) 45%, transparent 85%); clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);"></div>
 
     <!-- Ambient Haze -->
-    <div class="animate-pulse-haze absolute bottom-0 inset-x-0 h-[45vh] bg-gradient-to-t from-[#0c0d10] via-zinc-950/60 to-transparent"></div>
+    <div class="animate-pulse-haze absolute bottom-0 inset-x-0 h-[40vh] bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
     <!-- Canvas for Floating Gold Sparkles -->
     <canvas id="sparkle-canvas" class="absolute inset-0 w-full h-full"></canvas>
@@ -132,7 +132,7 @@
   </div>
 
   <!-- Main Navigation Header -->
-  <header class="sticky top-1.5 z-40 w-full bg-zinc-950/85 backdrop-blur-xl border-b border-white/10">
+  <header class="sticky top-1.5 z-40 w-full bg-zinc-950/90 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Brand / Identity -->
@@ -159,9 +159,9 @@
             <span>SOUND SYSTEM FX</span>
           </button>
 
-          <button onclick="openDonateModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FED100] hover:bg-yellow-400 text-black text-xs font-extrabold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(254,209,0,0.3)] hover:scale-105">
-            <span>SUPPORT CAMPAIGN</span>
-          </button>
+          <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FED100] hover:bg-yellow-400 text-black text-xs font-extrabold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(254,209,0,0.4)] hover:scale-105">
+            <span>SUPPORT CAMPAIGN ↗</span>
+          </a>
         </div>
       </div>
     </div>
@@ -188,7 +188,7 @@
         <span class="text-[#C8102E]">GOFUNDME TARGET: £1,600</span>
         <span class="text-zinc-600">///</span>
       </div>
-      <!-- Repeated for seamless loop -->
+      <!-- Loop duplicate -->
       <div class="inline-flex items-center gap-3 px-6 text-xs md:text-sm tracking-wider uppercase font-semibold text-zinc-300">
         <span class="text-[#FED100]">⚡ MISA WEST LIVE IN CONCERT</span>
         <span class="text-zinc-600">///</span>
@@ -213,20 +213,20 @@
   <main class="flex-1 relative z-20">
     <!-- Hero Section -->
     <section class="relative pt-6 pb-16 md:pt-12 md:pb-24 overflow-hidden">
-      <!-- Background Concert Imagery -->
+      <!-- Background Concert Audience Atmosphere -->
       <div class="absolute inset-0 z-0 pointer-events-none">
-        <img src="/assets/aistudio/EYAb3uo9we__u7J_730b7364.jpg" alt="Concert atmosphere" class="w-full h-full object-cover object-top opacity-30 mix-blend-luminosity filter contrast-125" />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-[#0c0d10]/85 to-transparent"></div>
+        <img src="/assets/aistudio/EYAb3uo9we__u7J_730b7364.jpg" alt="Live reggae concert audience atmosphere" class="w-full h-full object-cover object-top opacity-25 mix-blend-luminosity filter contrast-125" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0c0d10] via-[#0c0d10]/90 to-transparent"></div>
       </div>
 
       <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Dual Heritage Badge -->
         <div class="flex items-center justify-between mb-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-xs text-zinc-300">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-black/70 backdrop-blur-md rounded-full border border-white/10 text-xs text-zinc-300">
             <span class="font-bold text-white">🇯🇲 Jamaica</span>
             <span class="text-zinc-500">×</span>
             <span class="font-bold text-white">🇬🇧 United Kingdom</span>
-            <span class="text-[#FED100] font-semibold">· Roots Reggae</span>
+            <span class="text-[#FED100] font-semibold">· Roots &amp; Soundsystem</span>
           </div>
         </div>
 
@@ -237,6 +237,8 @@
               <div class="text-xs font-bold uppercase tracking-widest text-[#FED100] flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#009B3A] animate-ping"></span>
                 <span>OFFICIAL LIVE CONCERT &amp; FUNDRAISER</span>
+                <span class="text-zinc-500">·</span>
+                <span class="text-[#C8102E]">JAMAICA × UK</span>
               </div>
               <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-headline tracking-tight text-white uppercase leading-[0.88]">
                 MISA <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FED100] via-[#009B3A] to-[#FED100]">WEST</span>
@@ -247,23 +249,23 @@
             </div>
 
             <!-- Key Info Bar -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-900/90 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-zinc-900/95 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
               <div class="flex items-center gap-3">
-                <div class="p-2.5 rounded-xl bg-[#009B3A]/20 text-[#009B3A]">📅</div>
+                <div class="p-2.5 rounded-xl bg-[#009B3A]/20 text-[#009B3A] border border-[#009B3A]/30">📅</div>
                 <div>
                   <div class="text-[11px] font-semibold text-zinc-400 uppercase">Date</div>
                   <div class="text-sm font-bold text-white">Sunday, Dec 20, 2026</div>
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <div class="p-2.5 rounded-xl bg-[#FED100]/20 text-[#FED100]">⏰</div>
+                <div class="p-2.5 rounded-xl bg-[#FED100]/20 text-[#FED100] border border-[#FED100]/30">⏰</div>
                 <div>
                   <div class="text-[11px] font-semibold text-zinc-400 uppercase">Time</div>
                   <div class="text-sm font-bold text-white">5 PM Sharp</div>
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <div class="p-2.5 rounded-xl bg-[#C8102E]/20 text-[#C8102E]">📍</div>
+                <div class="p-2.5 rounded-xl bg-[#C8102E]/20 text-[#C8102E] border border-[#C8102E]/30">📍</div>
                 <div>
                   <div class="text-[11px] font-semibold text-zinc-400 uppercase">Venue</div>
                   <div class="text-sm font-bold text-white">The Dingle, B45 0BP</div>
@@ -278,12 +280,12 @@
             <!-- Buttons -->
             <div class="flex flex-wrap items-center gap-3.5 pt-2">
               <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer"
-                 class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] via-[#ffd726] to-[#009B3A] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_rgba(254,209,0,0.45)] hover:scale-105 transition-all">
+                 class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] via-[#ffd726] to-[#009B3A] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-[0_0_30px_rgba(254,209,0,0.5)] hover:scale-105 transition-all">
                 <span>SUPPORT THE CAMPAIGN</span>
                 <span>↗</span>
               </a>
 
-              <a href="#music" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#012169] hover:bg-[#022c8a] text-white border border-white/20 text-sm font-semibold transition-all">
+              <a href="#music" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#012169] hover:bg-[#022c8a] text-white border border-blue-400/30 text-sm font-semibold transition-all">
                 <span>EXPLORE MUSIC VIDEOS</span>
               </a>
 
@@ -295,7 +297,7 @@
             <div class="flex flex-wrap items-center gap-3 pt-2 text-xs text-zinc-400">
               <span class="text-zinc-200">✓ £10 Entry at the Door</span>
               <span>·</span>
-              <span class="text-zinc-200">Authentic Jamaican Food On Sale</span>
+              <span class="text-zinc-200">Authentic Jamaican Jerk Food On Sale</span>
               <span>·</span>
               <span class="text-zinc-200">Licensed Bars Open</span>
               <span>·</span>
@@ -303,10 +305,10 @@
             </div>
           </div>
 
-          <!-- Right Column: Verified Artist Portrait -->
+          <!-- Right Column: Authentic Misa West Portrait -->
           <div class="lg:col-span-5 relative">
-            <div class="relative rounded-3xl bg-zinc-950/90 border border-white/15 overflow-hidden shadow-2xl backdrop-blur-xl">
-              <!-- Top Flag Bar -->
+            <div class="relative rounded-3xl bg-zinc-950/95 border border-white/20 overflow-hidden shadow-2xl backdrop-blur-xl">
+              <!-- Top 6-Color Flag Bar -->
               <div class="w-full flex h-2">
                 <div class="flex-[3] bg-[#009B3A]"></div>
                 <div class="flex-[2] bg-[#FED100]"></div>
@@ -317,18 +319,19 @@
               </div>
 
               <!-- Real Portrait of Misa West -->
-              <div class="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-zinc-900 group">
-                <img src="/assets/aistudio/Fundraiser-by-Craig-West-Misa-West-live-in-Concert-10-26-2026_06_40_PM_f00aed6c.png"
-                     alt="Misa West - Verified artist portrait"
-                     class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/30"></div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 border border-[#FED100]/50 text-[11px] font-bold text-[#FED100]">
-                  OFFICIAL ARTIST PORTRAIT
+              <div class="relative aspect-[4/3] sm:aspect-[16/12] overflow-hidden bg-gradient-to-b from-zinc-900 to-black group flex items-center justify-center p-2">
+                <img id="artist-portrait-img"
+                     src="/assets/aistudio/Misa_West__3__190f2c01.png"
+                     alt="Misa West - Verified artist photo in signature leopard velvet blazer"
+                     class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" />
+                <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none"></div>
+                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/85 border border-[#FED100]/60 text-[11px] font-bold text-[#FED100]">
+                  OFFICIAL ARTIST PHOTO
                 </div>
-                <div class="absolute bottom-3 inset-x-3 flex items-end justify-between">
+                <div class="absolute bottom-3 inset-x-3 flex items-end justify-between z-10">
                   <div>
                     <div class="text-xl font-headline tracking-wide text-white drop-shadow">MISA WEST</div>
-                    <div class="text-xs text-zinc-300">Lead Vocalist &amp; Reggae Artist</div>
+                    <div class="text-xs text-zinc-300 font-medium">Lead Vocalist &amp; Reggae Artist</div>
                   </div>
                   <div class="px-2.5 py-1 rounded bg-[#009B3A] text-[11px] font-bold text-white shadow">
                     LIVE DEC 20
@@ -336,11 +339,22 @@
                 </div>
               </div>
 
+              <!-- Quick Portrait Switcher -->
+              <div class="px-3 py-2 bg-black border-t border-b border-white/10 flex items-center justify-between text-xs text-zinc-400">
+                <span class="text-[10px] font-bold uppercase">Photos:</span>
+                <div class="flex gap-1.5">
+                  <button onclick="setPhoto('/assets/aistudio/Misa_West__3__190f2c01.png', 'contain')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-[#FED100] text-black">Concert Suit</button>
+                  <button onclick="setPhoto('/assets/aistudio/Misa_West__2__922cb871.png', 'contain')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-zinc-800 text-zinc-300 hover:text-white">Studio Wash</button>
+                  <button onclick="setPhoto('/assets/aistudio/Misa_West__1__b3b08678.png', 'contain')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-zinc-800 text-zinc-300 hover:text-white">Close-Up</button>
+                  <button onclick="setPhoto('/assets/aistudio/Fundraiser-by-Craig-West-Misa-West-live-in-Concert-10-26-2026_06_40_PM_f00aed6c.png', 'cover')" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-zinc-800 text-zinc-300 hover:text-white">GoFundMe</button>
+                </div>
+              </div>
+
               <!-- Countdown Timer -->
               <div class="p-4 sm:p-5 bg-gradient-to-b from-zinc-900 to-zinc-950 space-y-3">
                 <div class="flex items-center justify-between text-xs font-semibold text-zinc-400">
                   <span class="text-white">COUNTDOWN TO SHOWTIME</span>
-                  <span class="text-[#009B3A] font-mono">5:00 PM GMT</span>
+                  <span class="text-[#009B3A] font-mono font-bold">5:00 PM GMT</span>
                 </div>
                 <div class="grid grid-cols-4 gap-2 text-center">
                   <div class="p-2 rounded-xl bg-black/60 border border-white/5">
@@ -382,18 +396,18 @@
           </p>
         </div>
 
-        <div class="rounded-3xl bg-gradient-to-b from-zinc-900/90 to-zinc-950 border border-white/10 shadow-2xl p-6 sm:p-10 lg:p-12">
+        <div class="rounded-3xl bg-gradient-to-b from-zinc-900/95 to-zinc-950 border border-white/10 shadow-2xl p-6 sm:p-10 lg:p-12">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <!-- Left 7 Cols -->
             <div class="lg:col-span-7 space-y-6">
-              <div class="p-6 rounded-2xl bg-black/60 border border-white/10 space-y-3">
+              <div class="p-6 rounded-2xl bg-black/70 border border-white/10 space-y-3">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold text-zinc-400 uppercase tracking-widest">Campaign Target</span>
                   <span class="px-2.5 py-0.5 rounded-full bg-[#009B3A]/20 text-xs font-semibold text-[#009B3A]">Direct GoFundMe</span>
                 </div>
                 <div class="flex items-baseline gap-3">
                   <span class="text-5xl sm:text-6xl font-headline text-white">£1,600</span>
-                  <span class="text-sm text-zinc-400">Target Goal</span>
+                  <span class="text-sm text-[#FED100] font-semibold">Production Target Goal</span>
                 </div>
                 <p class="text-xs sm:text-sm text-zinc-300">
                   All contributions go directly towards the live concert production, venue hire at The Dingle, sound engineering, and authentic community hospitality.
@@ -402,29 +416,29 @@
 
               <div class="flex flex-wrap items-center gap-3 pt-2">
                 <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] to-[#ffd000] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider hover:bg-yellow-400 hover:scale-105 transition-all shadow-[0_0_25px_rgba(254,209,0,0.4)]">
+                   class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FED100] to-[#ffd000] text-black font-extrabold text-sm sm:text-base uppercase tracking-wider hover:bg-yellow-400 hover:scale-105 transition-all shadow-[0_0_25px_rgba(254,209,0,0.5)]">
                   <span>DONATE ON GOFUNDME</span>
                   <span>↗</span>
                 </a>
                 <button onclick="copyLink('https://gofund.me/297ce37b2')" class="px-4 py-3.5 rounded-xl bg-zinc-800 text-zinc-200 border border-zinc-600/60 text-xs sm:text-sm font-semibold hover:bg-zinc-700 transition-all">
-                  COPY DONATION LINK
+                  COPY GOFUNDME LINK
                 </button>
               </div>
             </div>
 
-            <!-- Right 5 Cols: Real QR Code -->
+            <!-- Right 5 Cols: Clickable QR Code -->
             <div class="lg:col-span-5 flex flex-col items-center">
-              <div class="w-full max-w-sm rounded-2xl bg-black border-2 border-[#FED100]/40 p-5 shadow-2xl text-center space-y-4">
+              <div class="w-full max-w-sm rounded-2xl bg-black border-2 border-[#FED100]/60 p-5 shadow-2xl text-center space-y-4">
                 <div class="text-xs font-bold text-[#FED100] uppercase tracking-wider">
                   INSTANT MOBILE DONATION
                 </div>
-                <div class="p-2 rounded-xl bg-white shadow-md inline-block">
-                  <img src="/assets/aistudio/QR_Code_7996fe3f.png" alt="Scan to donate QR code" class="w-56 h-56 sm:w-64 sm:h-64 object-contain rounded-lg" />
-                </div>
-                <p class="text-xs text-zinc-300">Point your smartphone camera at the code to donate instantly</p>
+                <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-white shadow-xl inline-block hover:scale-105 transition-transform" title="Click to open https://gofund.me/297ce37b2">
+                  <img src="/assets/aistudio/QR_Code_7996fe3f.png" alt="Official GoFundMe QR Code" class="w-56 h-56 sm:w-64 sm:h-64 object-contain rounded-lg" />
+                </a>
+                <p class="text-xs text-zinc-300">Point camera at QR code or click image to donate directly</p>
                 <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer"
-                   class="w-full py-2.5 px-4 rounded-xl bg-[#009B3A] text-white text-xs font-bold uppercase tracking-wider block hover:bg-[#008230] transition-colors">
-                  OPEN GOFUNDME PAGE ↗
+                   class="w-full py-2.5 px-4 rounded-xl bg-[#009B3A] text-white text-xs font-bold uppercase tracking-wider block hover:bg-[#008230] transition-colors shadow">
+                  OPEN GOFUNDME PAGE (297ce37b2) ↗
                 </a>
               </div>
             </div>
@@ -652,26 +666,16 @@
     </div>
   </footer>
 
-  <!-- Scan QR Modal -->
-  <div id="donate-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-    <div class="relative w-full max-w-lg rounded-3xl bg-zinc-950 border border-white/20 p-6 sm:p-8 shadow-2xl text-center space-y-6">
-      <button onclick="closeDonateModal()" class="absolute top-4 right-4 p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white">✕</button>
-      <div class="space-y-1">
-        <h3 class="text-3xl font-headline text-white uppercase">MISA WEST LIVE IN CONCERT</h3>
-        <p class="text-xs text-zinc-400">Fundraising Target: <strong class="text-[#FED100]">£1,600</strong></p>
-      </div>
-      <div class="p-3 bg-white rounded-2xl inline-block border-4 border-[#FED100]">
-        <img src="/assets/aistudio/QR_Code_7996fe3f.png" alt="GoFundMe QR Code" class="w-56 h-56 object-contain" />
-      </div>
-      <div class="space-y-2">
-        <a href="https://gofund.me/297ce37b2" target="_blank" rel="noopener noreferrer" class="w-full block py-3 px-6 rounded-xl bg-gradient-to-r from-[#FED100] to-[#009B3A] text-black font-extrabold text-sm uppercase">
-          CONTINUE TO GOFUNDME ↗
-        </a>
-      </div>
-    </div>
-  </div>
-
   <script>
+    // Photo Switcher
+    function setPhoto(src, fit) {
+      const img = document.getElementById('artist-portrait-img');
+      if (img) {
+        img.src = src;
+        img.style.objectFit = fit;
+      }
+    }
+
     // Live Countdown
     const targetDate = new Date('2026-12-20T17:00:00Z').getTime();
     function updateCountdown() {
@@ -686,10 +690,6 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    // Modal controls
-    function openDonateModal() { document.getElementById('donate-modal').classList.remove('hidden'); }
-    function closeDonateModal() { document.getElementById('donate-modal').classList.add('hidden'); }
 
     // Copy to clipboard
     function copyLink(text) {
@@ -759,7 +759,7 @@
       let w = canvas.width = window.innerWidth;
       let h = canvas.height = window.innerHeight;
       window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
-      const particles = Array.from({ length: 35 }, () => ({
+      const particles = Array.from({ length: 40 }, () => ({
         x: Math.random() * w, y: Math.random() * h,
         size: Math.random() * 2.5 + 0.8,
         speedY: -(Math.random() * 0.7 + 0.3),
